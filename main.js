@@ -1,7 +1,24 @@
 const product = require("./product");
 
-// product.create_new_product("ipad", "1000");
+const express = require("express");
+const cors = require("cors")
+// const body_parser = require("body-parser");
 
-// product.delete_product_by_id(9);
-product.update_price_by_id(10, 1500);
-product.get_all_products();
+server = express();
+// server.use(body_parser.json());
+server.use(express.json());
+server.use(cors());
+
+// router = express.Router();
+
+// router.get("/welcome",(request,response)=>{
+//     response.status(200).send("Welcome to DevToolkit#2");
+// });
+
+// server.use(router);
+
+server.use(product.router);
+
+server.listen(3000, () => {
+  console.log("Server is running!");
+});
